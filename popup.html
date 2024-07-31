@@ -10,6 +10,10 @@
       button {
         margin-top: 10px;
       }
+      img {
+        width: 20px;
+        height: 20px;
+      }
       ul {
         list-style-type: none;
         padding: 0;
@@ -28,7 +32,10 @@
       Be sure to display the current participants tab so they can be tracked.
     </p>
     <button id="generate">Generate Random List</button>
-    <ul id="participantList"></ul>
+    <div id="participantList"></div>
+    <button id="copy">
+      <img src="images/copy.svg" alt="copy to clipboard" />
+    </button>
     <script src="popup.js"></script>
   </body>
 </html>

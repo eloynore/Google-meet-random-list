@@ -24,7 +24,7 @@ function getParticipants() {
     '[role="listitem"] div[avatar-tooltip-id] div[jsname] span:first-child'
   );
   const participants = Array.from(participantElements).map(
-    (el) => el.innerText
+    (el) => el.innerText.split(" ")[0]
   );
   return participants;
 }
@@ -38,13 +38,20 @@ function shuffleArray(array) {
   return array;
 }
 
+// add copy to clipboard
+function copyToClipboard(list) {
+  navigator.clipboard.writeText(list);
+  let message = document.createElement("p");
+  message.innerText = "Copied";
+  document.getElementById("copy").after(message);
+  return null;
+}
+
 // Function to display participants in the popup
 function displayParticipants(participants) {
-  const ul = document.getElementById("participantList");
-  ul.innerHTML = "";
-  participants.forEach((participant) => {
-    const li = document.createElement("li");
-    li.textContent = participant;
-    ul.appendChild(li);
+  const list = document.getElementById("participantList");
+  list.innerHTML = participants.join(", ");
+  document.getElementById("copy").addEventListener("click", function () {
+    copyToClipboard(list.innerHTML);
   });
 }
