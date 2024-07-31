@@ -41,9 +41,7 @@ function shuffleArray(array) {
 // add copy to clipboard
 function copyToClipboard(list) {
   navigator.clipboard.writeText(list);
-  let message = document.createElement("p");
-  message.innerText = "Copied";
-  document.getElementById("copy").after(message);
+  document.getElementById("copied").innerText = "Copied!";
   return null;
 }
 
@@ -51,6 +49,8 @@ function copyToClipboard(list) {
 function displayParticipants(participants) {
   const list = document.getElementById("participantList");
   list.innerHTML = participants.join(", ");
+  document.getElementById("copied").innerText = "";
+  document.getElementById("copy").style.display = "";
   document.getElementById("copy").addEventListener("click", function () {
     copyToClipboard(list.innerHTML);
   });
